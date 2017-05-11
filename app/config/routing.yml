@@ -1,0 +1,4 @@
+music:
+    resource: "@MusicBundle/Resources/config/routing.yml"
+    prefix:   /
+

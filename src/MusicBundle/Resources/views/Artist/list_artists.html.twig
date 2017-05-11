@@ -1,0 +1,28 @@
+{% extends 'MusicBundle::layout.html.twig' %}
+
+{% block main %}
+
+    <div class="top-table">
+        <a href="{{ path('add_artist') }}" class="right-btn btn btn-xs btn-success">Nouvel artiste</a>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>Artiste</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for artist in artists %}
+            <tr>
+                <td><a href="{{ path('list_albums', {'artistSlug': artist.slug}) }}"><img class="music-pic" src="{{ artist.picture }}" alt="{{ artist.name }}"> {{ artist.name }}</a></td>
+                <td>
+                    <a href="{{ path('delete_artist', {'artistSlug': artist.slug}) }}" class="btn btn-sm btn-danger">Supprimer</a>
+                    <a href="{{ path('edit_artist', {'artistSlug': artist.slug}) }}" class="btn btn-sm btn-warning">Modifier</a>
+                    <a href="{{ path('add_album', {'artistSlug': artist.slug}) }}" class="btn btn-sm btn-success">Nouvel album</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block title %}Tous les artistes{% endblock %}

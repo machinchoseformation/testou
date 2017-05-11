@@ -1,0 +1,13 @@
+{% extends 'MusicBundle::layout.html.twig' %}
+
+{% block main %}
+    {{ form(form) }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li><a href="{{ path('list_albums', {'artistSlug': artist.slug}) }}">{{ artist.name }}</a></li>
+    <li><a href="{{ path('list_songs', {'artistSlug': artist.slug, 'albumId': album.id}) }}">{{ album.name }}</a></li>
+    <li>{{ song.name }}</li>
+{% endblock %}
+
+{% block title %}Modification d'un {{ song.name }}{% endblock %}

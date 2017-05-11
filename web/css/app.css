@@ -1,0 +1,17 @@
+.music-pic {
+    width: 64px;
+    margin-right: 10px;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+.top-table {
+    margin: 5px 0 10px;
+    text-align: right;
+}
+
+#musicbundle_album_tags {
+    height: 250px;
+}

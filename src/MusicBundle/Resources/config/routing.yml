@@ -1,0 +1,77 @@
+#
+# Artistes
+#
+
+list_artists:
+    path:     /
+    defaults: { _controller: MusicBundle:Artist:listArtists }
+
+add_artist:
+    path:     /artiste/creation
+    defaults: { _controller: MusicBundle:Artist:addArtist }
+
+edit_artist:
+    path:     /artiste/{artistSlug}/modification
+    defaults: { _controller: MusicBundle:Artist:editArtist }
+    requirements:
+        artistSlug: "[a-zA-Z0-9-]+"
+
+delete_artist:
+    path:     /artiste/{artistSlug}/suppression
+    defaults: { _controller: MusicBundle:Artist:deleteArtist }
+    requirements:
+        artistSlug: "[a-zA-Z0-9-]+"
+
+#
+# Albums
+#
+add_album:
+    path:     /artiste/{artistSlug}/album/creation
+    defaults: { _controller: MusicBundle:Album:addAlbum }
+    requirements:
+        artistSlug: "[a-zA-Z0-9-]+"
+
+edit_album:
+    path:     /artiste/{artistSlug}/album/{albumId}/modification
+    defaults: { _controller: MusicBundle:Album:editAlbum }
+    requirements:
+        artistSlug: "[a-zA-Z0-9-]+"
+        albumId: \d+
+
+delete_album:
+    path:     /artiste/{artistSlug}/album/{albumId}/suppression
+    defaults: { _controller: MusicBundle:Album:deleteAlbum }
+    requirements:
+        artistSlug: "[a-zA-Z0-9-]+"
+        albumId: \d+
+
+list_albums:
+    path:     /artiste/{artistSlug}/album
+    defaults: { _controller: MusicBundle:Album:listAlbums }
+    requirements:
+        artistSlug: "[a-zA-Z0-9-]+"
+
+#
+# Songs
+#
+list_songs:
+    path:     /artiste/{artistSlug}/album/{albumId}/chansons
+    defaults: { _controller: MusicBundle:Song:listSongs }
+    requirements:
+        artistSlug: "[a-zA-Z0-9-]+"
+        albumId: \d+
+
+add_song:
+    path:     /artiste/{artistSlug}/album/{albumId}/chansons/creation
+    defaults: { _controller: MusicBundle:Song:addSong }
+    requirements:
+        artistSlug: "[a-zA-Z0-9-]+"
+        albumId: \d+
+
+edit_song:
+    path:     /artiste/{artistSlug}/album/{albumId}/chansons/{songId}/modification
+    defaults: { _controller: MusicBundle:Song:editSong }
+    requirements:
+        artistSlug: "[a-zA-Z0-9-]+"
+        albumId: \d+
+        songId: \d+

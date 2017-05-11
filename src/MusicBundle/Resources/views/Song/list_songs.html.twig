@@ -1,0 +1,35 @@
+{% extends 'MusicBundle::layout.html.twig' %}
+
+{% block main %}
+
+    <div class="top-table">
+        <a href="{{ path('add_song', {'artistSlug': artist.slug, 'albumId': album.id}) }}" class="right-btn btn btn-xs btn-success">Nouvelle chanson</a>
+    </div>
+
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Titre</th>
+            <th>Durée</th>
+            <th>Actions</th>
+        </tr>
+
+        {% for song in songs %}
+            <tr>
+                <td>{{ song.number }}</td>
+                <td><a href="{{ path('edit_song', {'artistSlug': artist.slug, 'albumId': album.id, 'songId': song.id}) }}">{{ song.name }}</a></td>
+                {# Voir l'extension de Fabien dans src/MusicBundle/Twig/AppExtension.php #}
+                <td>{{ song.duration|time }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <li><a href="{{ path('list_albums', {'artistSlug': artist.slug}) }}">{{ artist.name }}</a></li>
+    <li>{{ album.name }}</li>
+{% endblock %}
+
+{% block title %}Tous les albums{% endblock %}

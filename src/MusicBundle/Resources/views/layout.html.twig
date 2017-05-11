@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MusicDB | Back-office{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <header>
+
+            <h1>
+                <a href="{{ path('list_artists') }}"><img id="logo" src="{{ asset('img/logo.png') }}" alt="MusicDB">
+                <span id="site-title">MusicDB</span></a>
+            </h1>
+
+        </header>
+
+        {% for flash_message in app.session.flashBag.get('success') %}
+            <div class="alert alert-success">
+                {{ flash_message }}
+            </div>
+        {% endfor %}
+
+        <ol class="breadcrumb">
+            <li><a href="{{ path('list_artists') }}">Artistes</a></li>
+            {% block breadcrumb %}{% endblock %}
+        </ol>
+
+        <main>
+            {% block main %}{% endblock %}
+        </main>
+        <footer>
+
+        </footer>
+    </div>
+
+    {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% endblock %}
+</body>
+</html>
